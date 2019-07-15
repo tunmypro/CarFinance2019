@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppCarFinance.Page2"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="Page2">
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Picker
+                Title="เลือกรถ1"
+                Grid.Row="0"
+                Grid.Column="0" />
+            <Picker
+                Title="เลือกรถ2"
+                Grid.Row="0"
+                Grid.Column="1" />
+            <Button
+                Grid.Row="1"
+                Grid.ColumnSpan="2"
+                Text="ประเมิณ" />
+            <Entry
+                Grid.Row="2"
+                Grid.ColumnSpan="2"
+                Placeholder="ราคาประเมิณ" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

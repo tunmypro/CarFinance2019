@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppCar.View.Login"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="เข้าสู่ระบบ">
+
+    <ContentPage.Content>
+        <StackLayout>
+            <Entry
+                x:Name="UsernameEntry"
+                Placeholder="ยูสเซอร์เนม"
+                PlaceholderColor="Silver" />
+            <Entry
+                x:Name="PasswordEntry"
+                IsPassword="true"
+                Keyboard="Default"
+                Placeholder="พาสเวิร์ด"
+                PlaceholderColor="Silver" />
+            <Button Clicked="Login_Clicked" Text="เข้าสู่ระบบ" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

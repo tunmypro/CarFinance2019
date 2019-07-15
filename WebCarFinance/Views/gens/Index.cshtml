@@ -1,0 +1,58 @@
+﻿@model IEnumerable<APICarFinance.gen>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.genname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.genyear)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gencost)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gendetail)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.car.carbrand)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.genname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.genyear)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gencost)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gendetail)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.car.carbrand)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.gencode }) |
+            @Html.ActionLink("Details", "Details", new { id=item.gencode }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.gencode })
+        </td>
+    </tr>
+}
+
+</table>

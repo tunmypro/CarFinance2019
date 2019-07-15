@@ -1,0 +1,113 @@
+﻿@{if (Session["Pass"] == null)
+    {
+        <script>
+          //window.location.href = "@Url.Action("Index", "Logins")"
+        </script>
+    }
+    else
+    {
+        <script>
+          setTimeout(function () { window.location.href = "@Url.Action("Logout", "Logins")"; }, 300000);
+        </script>
+    }
+
+}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    @*@Styles.Render("~/Content/css")*@
+    <link href="~/Content/bootstrapLumen.min.css" rel="stylesheet" />
+    @Scripts.Render("~/bundles/modernizr")
+    <style type="text/css">
+        .redText {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <a class="navbar-brand" href='@Url.Action("Index", "Home")'>CarFinance</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href='@Url.Action("Details", "View_Car")'>ประเมิณราคารถ</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href='@Url.Action("Index", "GGMap")'>หาจุดชำระเงิน</a>
+                </li>
+                @if (Session["pay"] != null)
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href='@Url.Action("Index", "View_Customer")'>จ่ายเงิน</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href='@Url.Action("Create", "loans")'>ทำสัญญา</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">จัดการ</a>
+                        <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 37px, 0px);">
+                            <a class="dropdown-item" href='@Url.Action("Create", "cars")'>เพิ่มยี่ห้อรถยนต์</a>
+                            <a class="dropdown-item" href='@Url.Action("Create", "gens")'>เพิ่มรุ่นรถยนต์</a>
+                        </div>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false">ดู</a>
+                        <div class="dropdown-menu" x-placement="bottom-start" style="position: absolute; will-change: transform; top: 0px; left: 0px; transform: translate3d(0px, 37px, 0px);">
+                            <a class="dropdown-item" href='@Url.Action("Index", "View_Car")'>รถยนต์</a>
+                            <a class="dropdown-item" href='@Url.Action("Index", "members")'>บุคคล</a>
+                            <a class="dropdown-item" href='@Url.Action("Index", "In_Ex")'>รายรับ-รายจ่าย</a>
+                            <a class="dropdown-item" href='@Url.Action("View_Customers", "View_Customer")'>ดูบุคคลค้างชำระ</a>
+                        </div>
+                    </li>
+                }
+            </ul>
+            <ul class="navbar-nav ml-auto">
+
+                @if (Session["Pass"] != null)
+                {
+                    <p class="text-danger text-strong">
+                        Logged in as: <span class="redText">@Session["User"]</span>
+                    </p>
+                    <li class="nav-item">
+                        <a class="nav-link" href='@Url.Action("Details", "members", new {id = Session["Userid"]})'>ดูข้อมูล</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href='@Url.Action("Shows", "View_Customer", new {name = Session["User"]})'>ดูข้อมูลการกู้</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href='@Url.Action("Logout", "logins")'>ออกจากระบบ</a>
+                    </li>
+                }
+                else
+                {
+                    <li class="nav-item">
+                        <a class="nav-link" href='@Url.Action("Index", "logins")'>เข้าสู่ระบบ</a>
+                    </li>
+                }
+            </ul>
+
+        </div>
+    </div>
+    <br />
+    <br />
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer>
+            <p>&copy; @(DateTime.Now.Year + 543) - Create By TiceTmP</p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

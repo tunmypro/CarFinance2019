@@ -1,0 +1,46 @@
+﻿@model IEnumerable<APICarFinance.In_Ex>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div class="row">
+    <div class="col-4">
+
+        <div class="card text-white bg-info mb-3" style="max-width: 25rem;">
+            <div class="card-header">รายรับรวม</div>
+            <div class="card-body">
+                <h4 class="card-title"></h4>
+                <h2>
+                    @ViewBag.sumin
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+
+        <div class="card text-white bg-info mb-3" style="max-width: 25rem;">
+            <div class="card-header">รายจ่ายรวม</div>
+            <div class="card-body">
+                <h4 class="card-title"></h4>
+                <h2>
+                    @ViewBag.sumex
+                </h2>
+            </div>
+        </div>
+    </div>
+    <div class="col-4">
+
+        <div class="card text-white bg-info mb-3" style="max-width: 25rem;">
+            <div class="card-header">รายได้สุทธิ</div>
+            <div class="card-body">
+                <h4 class="card-title"></h4>
+                <h2>
+                    @ViewBag.total
+                </h2>
+            </div>
+        </div>
+    </div>
+
+</div>

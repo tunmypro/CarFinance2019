@@ -1,0 +1,71 @@
+﻿@model APICarFinance.receipt
+
+@{
+    ViewBag.Title = "Create";
+}
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.reloan, htmlAttributes: new { @class = "col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.reloan, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly", @Value = ViewBag.loancode } })
+                @Html.ValidationMessageFor(model => model.reloan, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h6>จำนวนเดือน</h6>
+            <div class="col-md-10">
+                @{
+                    List<int> month = (List<int>)ViewBag.loanmonth;
+                    @Html.DropDownList("loanmonth", new SelectList(month))
+                }
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h6> จำนวนเงินที่ต้องชำระ</h6>
+            <div class="col-md-10" id="permonth">
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.rerecive, htmlAttributes: new { @class = "col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.rerecive, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.rerecive, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="จ่าย" class="btn btn-outline-primary" />
+            </div>
+        </div>
+    </div>
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+<script src="~/Scripts/jquery-3.4.1.js"></script>
+
+<script>
+    var permonth = document.getElementById("permonth");
+    permonth.innerHTML = (@ViewBag.permonth).toFixed(2);
+    $(function () {
+        $('#loanmonth').on('change', function (e) {
+            var loanmonth = this.value;
+            permonth.innerHTML = (@ViewBag.permonth* loanmonth).toFixed(2);
+            $.get("/receipts/getmonth",{ month: loanmonth });
+        });
+    });
+</script>

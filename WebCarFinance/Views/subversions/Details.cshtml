@@ -1,0 +1,43 @@
+﻿@model APICarFinance.subversion
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>subversion</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.subname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.subcost)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.subcost)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gen.genname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gen.genname)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.subcode }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

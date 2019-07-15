@@ -1,0 +1,100 @@
+﻿@model APICarFinance.login
+
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_Layout - Login.cshtml";
+}
+
+<head>
+    <style>
+        .note {
+            text-align: center;
+            height: 80px;
+            background: -webkit-linear-gradient(left, #0072ff, #8811c5);
+            color: #fff;
+            font-weight: bold;
+            line-height: 80px;
+        }
+
+        .form-content {
+            padding: 5%;
+            border: 1px solid #ced4da;
+            margin-bottom: 2%;
+        }
+
+        .form-control {
+            border-radius: 1.5rem;
+        }
+
+        .btnSubmit {
+            border: none;
+            border-radius: 1.5rem;
+            padding: 1%;
+            width: 20%;
+            cursor: pointer;
+            background: #0062cc;
+            color: #fff;
+        }
+    </style>
+</head>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <a href='@Url.Action("Index", "logins")' class="btn btn-outline-secondary">กลับ</a>
+
+    <div class="container register-form">
+        <div class="form">
+            <div class="note">
+                <p>ยินดีต้อนรับ กรุณากรอกข้อมูลให้ครบถ้วน</p>
+            </div>
+
+            <div class="form-content">
+                <div class="row">
+                    <div class="col-md-6">
+                        <div class="form-group">
+                                @Html.LabelFor(model => model.logmem, htmlAttributes: new { @class = "control-label col-md-12" })
+                                <div class="col-md-10">
+                                    @Html.EditorFor(model => model.logmem, ViewBag.Readonly ? (object)new { htmlAttributes = new { @readonly = "readonly", @class = "form-control", @Value = ViewBag.idcard } } : new { htmlAttributes = new { @class = "form-control", autocomplete = "off" } })
+                                    @Html.ValidationMessageFor(model => model.logmem, "", new { @class = "text-danger" })
+                                </div>
+                            </div>
+                            <div class="form-group">
+                            @Html.LabelFor(model => model.loguser, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.loguser, new { htmlAttributes = new { @class = "form-control" , autocomplete = "off" } })
+                                @Html.ValidationMessageFor(model => model.loguser, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.logpass, htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.logpass, new { htmlAttributes = new { @class = "form-control", @Type = "password", autocomplete = "off" } })
+                                @Html.ValidationMessageFor(model => model.logpass, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.passwordcheck,"ใส่รหัสผ่านอีกครั้ง", htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.passwordcheck, new { htmlAttributes = new { @class = "form-control", @Type = "password" , autocomplete = "off" } })
+                                @Html.ValidationMessageFor(model => model.passwordcheck, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.specialcode,"รหัสพิเศษ(ไม่มีไม่ต้องใส่)", htmlAttributes: new { @class = "control-label col-md-12" })
+                            <div class="col-md-10">
+                                @Html.EditorFor(model => model.specialcode, new { htmlAttributes = new { @class = "form-control", @Type = "password" , autocomplete = "off" } })
+                                @Html.ValidationMessageFor(model => model.specialcode, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <button type="submit" class="btnSubmit">สมัคร</button>
+            </div>
+        </div>
+    </div>
+}
+

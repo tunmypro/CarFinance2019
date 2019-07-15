@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppCarFinance.Page2"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModel="clr-namespace:AppCar.ViewModel;assembly=AppCar"
+    Title="ประเมิณราคารถ">
+
+    <ContentPage.BindingContext>
+        <viewModel:Page2ViewModel />
+    </ContentPage.BindingContext>
+
+    <ContentPage.Content>
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="80" />
+                <RowDefinition Height="80" />
+                <RowDefinition Height="50" />
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Picker
+                x:Name="Picker1"
+                Title="-----กรุณาเลือกยี่ห้อรถ-----"
+                Grid.Row="0"
+                Grid.Column="0"
+                ItemDisplayBinding="{Binding carbrand}"
+                ItemsSource="{Binding carList}"
+                SelectedIndexChanged="getgen" />
+            <Picker
+                x:Name="Picker2"
+                Title="-----กรุณาเลือกรุ่นรถ-----"
+                Grid.Row="0"
+                Grid.Column="1"
+                SelectedItem="{Binding SelectedCars}" />
+            <Button
+                Grid.Row="1"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Command="{Binding getPrice}" />
+            <Label
+                Grid.Row="2"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                FontSize="Large"
+                Text="{Binding price, Mode=TwoWay}" />
+        </Grid>
+    </ContentPage.Content>
+</ContentPage>

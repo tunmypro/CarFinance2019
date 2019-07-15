@@ -1,0 +1,628 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="CarFinance5917Model.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="car">
+          <Key>
+            <PropertyRef Name="carcode" />
+          </Key>
+          <Property Name="carcode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="carbrand" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="gen">
+          <Key>
+            <PropertyRef Name="gencode" />
+          </Key>
+          <Property Name="gencode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="genname" Type="varchar" MaxLength="50" />
+          <Property Name="genyear" Type="varchar" MaxLength="4" />
+          <Property Name="gencost" Type="money" />
+          <Property Name="gendetail" Type="text" />
+          <Property Name="gencar" Type="int" />
+        </EntityType>
+        <EntityType Name="In_Ex">
+          <Key>
+            <PropertyRef Name="no" />
+          </Key>
+          <Property Name="no" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="income" Type="money" />
+          <Property Name="expenditure" Type="money" />
+          <Property Name="date" Type="date" />
+        </EntityType>
+        <EntityType Name="loan">
+          <Key>
+            <PropertyRef Name="loancode" />
+          </Key>
+          <Property Name="loancode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="loanmem" Type="varchar" MaxLength="13" />
+          <Property Name="loanmoney" Type="money" />
+          <Property Name="loandate" Type="date" />
+          <Property Name="loanmonth" Type="int" />
+          <Property Name="loancar" Type="int" />
+          <Property Name="loaninterest" Type="float" />
+          <Property Name="loadpermonth" Type="money" />
+          <Property Name="loanlastdate" Type="date" />
+        </EntityType>
+        <EntityType Name="login">
+          <Key>
+            <PropertyRef Name="logcode" />
+          </Key>
+          <Property Name="logcode" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="logmem" Type="varchar" MaxLength="13" />
+          <Property Name="loguser" Type="varchar" MaxLength="50" />
+          <Property Name="logpass" Type="varchar" MaxLength="50" />
+          <Property Name="logtype" Type="int" />
+        </EntityType>
+        <EntityType Name="member">
+          <Key>
+            <PropertyRef Name="memidcard" />
+          </Key>
+          <Property Name="memidcard" Type="varchar" MaxLength="13" Nullable="false" />
+          <Property Name="memname" Type="varchar" MaxLength="50" />
+          <Property Name="memlname" Type="varchar" MaxLength="50" />
+          <Property Name="memage" Type="int" />
+          <Property Name="memcareer" Type="varchar" MaxLength="50" />
+          <Property Name="memincome" Type="money" />
+          <Property Name="memtel" Type="varchar" MaxLength="10" />
+          <Property Name="memline" Type="varchar" MaxLength="20" />
+        </EntityType>
+        <EntityType Name="receipt">
+          <Key>
+            <PropertyRef Name="recode" />
+          </Key>
+          <Property Name="recode" Type="varchar" MaxLength="10" Nullable="false" />
+          <Property Name="reloan" Type="int" />
+          <Property Name="redate" Type="date" />
+          <Property Name="remoney" Type="money" />
+          <Property Name="rerecive" Type="money" />
+          <Property Name="rechange" Type="money" />
+          <Property Name="remem" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <EntityType Name="type">
+          <Key>
+            <PropertyRef Name="typecode" />
+          </Key>
+          <Property Name="typecode" Type="int" Nullable="false" />
+          <Property Name="typename" Type="varchar" MaxLength="10" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CarFinance5917.dbo.View_Car' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Car">
+          <Key>
+            <PropertyRef Name="gencode" />
+          </Key>
+          <Property Name="gencode" Type="int" Nullable="false" />
+          <Property Name="carbrand" Type="varchar" MaxLength="50" />
+          <Property Name="genname" Type="varchar" MaxLength="50" />
+          <Property Name="genyear" Type="varchar" MaxLength="4" />
+          <Property Name="gencost" Type="money" />
+          <Property Name="gendetail" Type="text" />
+        </EntityType>
+        <!--Errors Found During Generation:
+warning 6002: The table/view 'CarFinance5917.dbo.View_Customer' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.-->
+        <EntityType Name="View_Customer">
+          <Key>
+            <PropertyRef Name="loancode" />
+          </Key>
+          <Property Name="loancode" Type="int" Nullable="false" />
+          <Property Name="memname" Type="varchar" MaxLength="50" />
+          <Property Name="memlname" Type="varchar" MaxLength="50" />
+          <Property Name="memtel" Type="varchar" MaxLength="10" />
+          <Property Name="loanmoney" Type="money" />
+          <Property Name="loanmonth" Type="int" />
+          <Property Name="loadpermonth" Type="money" />
+          <Property Name="carbrand" Type="varchar" MaxLength="50" />
+          <Property Name="genname" Type="varchar" MaxLength="50" />
+        </EntityType>
+        <Association Name="FK_gen_car">
+          <End Role="car" Type="Self.car" Multiplicity="0..1" />
+          <End Role="gen" Type="Self.gen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="car">
+              <PropertyRef Name="carcode" />
+            </Principal>
+            <Dependent Role="gen">
+              <PropertyRef Name="gencar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_loan_gen">
+          <End Role="gen" Type="Self.gen" Multiplicity="0..1" />
+          <End Role="loan" Type="Self.loan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen">
+              <PropertyRef Name="gencode" />
+            </Principal>
+            <Dependent Role="loan">
+              <PropertyRef Name="loancar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_loan_member">
+          <End Role="member" Type="Self.member" Multiplicity="0..1" />
+          <End Role="loan" Type="Self.loan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="memidcard" />
+            </Principal>
+            <Dependent Role="loan">
+              <PropertyRef Name="loanmem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_login_member">
+          <End Role="member" Type="Self.member" Multiplicity="0..1" />
+          <End Role="login" Type="Self.login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="memidcard" />
+            </Principal>
+            <Dependent Role="login">
+              <PropertyRef Name="logmem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_login_type">
+          <End Role="type" Type="Self.type" Multiplicity="0..1" />
+          <End Role="login" Type="Self.login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type">
+              <PropertyRef Name="typecode" />
+            </Principal>
+            <Dependent Role="login">
+              <PropertyRef Name="logtype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_receipt_loan">
+          <End Role="loan" Type="Self.loan" Multiplicity="0..1" />
+          <End Role="receipt" Type="Self.receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loan">
+              <PropertyRef Name="loancode" />
+            </Principal>
+            <Dependent Role="receipt">
+              <PropertyRef Name="reloan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="CarFinance5917ModelStoreContainer">
+          <EntitySet Name="car" EntityType="Self.car" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="gen" EntityType="Self.gen" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="In_Ex" EntityType="Self.In_Ex" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="loan" EntityType="Self.loan" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="login" EntityType="Self.login" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="member" EntityType="Self.member" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="receipt" EntityType="Self.receipt" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="type" EntityType="Self.type" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="View_Car" EntityType="Self.View_Car" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Car].[gencode] AS [gencode], 
+    [View_Car].[carbrand] AS [carbrand], 
+    [View_Car].[genname] AS [genname], 
+    [View_Car].[genyear] AS [genyear], 
+    [View_Car].[gencost] AS [gencost], 
+    [View_Car].[gendetail] AS [gendetail]
+    FROM [dbo].[View_Car] AS [View_Car]</DefiningQuery>
+          </EntitySet>
+          <EntitySet Name="View_Customer" EntityType="Self.View_Customer" store:Type="Views" store:Schema="dbo">
+            <DefiningQuery>SELECT 
+    [View_Customer].[loancode] AS [loancode], 
+    [View_Customer].[memname] AS [memname], 
+    [View_Customer].[memlname] AS [memlname], 
+    [View_Customer].[memtel] AS [memtel], 
+    [View_Customer].[loanmoney] AS [loanmoney], 
+    [View_Customer].[loanmonth] AS [loanmonth], 
+    [View_Customer].[loadpermonth] AS [loadpermonth], 
+    [View_Customer].[carbrand] AS [carbrand], 
+    [View_Customer].[genname] AS [genname]
+    FROM [dbo].[View_Customer] AS [View_Customer]</DefiningQuery>
+          </EntitySet>
+          <AssociationSet Name="FK_gen_car" Association="Self.FK_gen_car">
+            <End Role="car" EntitySet="car" />
+            <End Role="gen" EntitySet="gen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_loan_gen" Association="Self.FK_loan_gen">
+            <End Role="gen" EntitySet="gen" />
+            <End Role="loan" EntitySet="loan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_loan_member" Association="Self.FK_loan_member">
+            <End Role="member" EntitySet="member" />
+            <End Role="loan" EntitySet="loan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_login_member" Association="Self.FK_login_member">
+            <End Role="member" EntitySet="member" />
+            <End Role="login" EntitySet="login" />
+          </AssociationSet>
+          <AssociationSet Name="FK_login_type" Association="Self.FK_login_type">
+            <End Role="type" EntitySet="type" />
+            <End Role="login" EntitySet="login" />
+          </AssociationSet>
+          <AssociationSet Name="FK_receipt_loan" Association="Self.FK_receipt_loan">
+            <End Role="loan" EntitySet="loan" />
+            <End Role="receipt" EntitySet="receipt" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="CarFinance5917Model" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="CarFinance5917Entities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="car" EntityType="CarFinance5917Model.car" />
+          <EntitySet Name="gen" EntityType="CarFinance5917Model.gen" />
+          <EntitySet Name="login" EntityType="CarFinance5917Model.login" />
+          <EntitySet Name="member" EntityType="CarFinance5917Model.member" />
+          <EntitySet Name="receipt" EntityType="CarFinance5917Model.receipt" />
+          <EntitySet Name="type" EntityType="CarFinance5917Model.type" />
+          <EntitySet Name="View_Car" EntityType="CarFinance5917Model.View_Car" />
+          <AssociationSet Name="FK_gen_car" Association="CarFinance5917Model.FK_gen_car">
+            <End Role="car" EntitySet="car" />
+            <End Role="gen" EntitySet="gen" />
+          </AssociationSet>
+          <AssociationSet Name="FK_login_member" Association="CarFinance5917Model.FK_login_member">
+            <End Role="member" EntitySet="member" />
+            <End Role="login" EntitySet="login" />
+          </AssociationSet>
+          <AssociationSet Name="FK_login_type" Association="CarFinance5917Model.FK_login_type">
+            <End Role="type" EntitySet="type" />
+            <End Role="login" EntitySet="login" />
+          </AssociationSet>
+          <EntitySet Name="View_Customer" EntityType="CarFinance5917Model.View_Customer" />
+          <EntitySet Name="In_Ex" EntityType="CarFinance5917Model.In_Ex" />
+          <EntitySet Name="loan" EntityType="CarFinance5917Model.loan" />
+          <AssociationSet Name="FK_loan_gen" Association="CarFinance5917Model.FK_loan_gen">
+            <End Role="gen" EntitySet="gen" />
+            <End Role="loan" EntitySet="loan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_loan_member" Association="CarFinance5917Model.FK_loan_member">
+            <End Role="member" EntitySet="member" />
+            <End Role="loan" EntitySet="loan" />
+          </AssociationSet>
+          <AssociationSet Name="FK_receipt_loan" Association="CarFinance5917Model.FK_receipt_loan">
+            <End Role="loan" EntitySet="loan" />
+            <End Role="receipt" EntitySet="receipt" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="car">
+          <Key>
+            <PropertyRef Name="carcode" />
+          </Key>
+          <Property Name="carcode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="carbrand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="gen" Relationship="CarFinance5917Model.FK_gen_car" FromRole="car" ToRole="gen" />
+        </EntityType>
+        <EntityType Name="gen">
+          <Key>
+            <PropertyRef Name="gencode" />
+          </Key>
+          <Property Name="gencode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="genname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="genyear" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="gencost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="gendetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+          <Property Name="gencar" Type="Int32" />
+          <NavigationProperty Name="car" Relationship="CarFinance5917Model.FK_gen_car" FromRole="gen" ToRole="car" />
+          <NavigationProperty Name="loan" Relationship="CarFinance5917Model.FK_loan_gen" FromRole="gen" ToRole="loan" />
+        </EntityType>
+        <EntityType Name="login">
+          <Key>
+            <PropertyRef Name="logcode" />
+          </Key>
+          <Property Name="logcode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="logmem" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="loguser" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="logpass" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="logtype" Type="Int32" />
+          <NavigationProperty Name="member" Relationship="CarFinance5917Model.FK_login_member" FromRole="login" ToRole="member" />
+          <NavigationProperty Name="type" Relationship="CarFinance5917Model.FK_login_type" FromRole="login" ToRole="type" />
+        </EntityType>
+        <EntityType Name="member">
+          <Key>
+            <PropertyRef Name="memidcard" />
+          </Key>
+          <Property Name="memidcard" Type="String" Nullable="false" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="memname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="memlname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="memage" Type="Int32" />
+          <Property Name="memcareer" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="memincome" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="memtel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="memline" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="login" Relationship="CarFinance5917Model.FK_login_member" FromRole="member" ToRole="login" />
+          <NavigationProperty Name="loan" Relationship="CarFinance5917Model.FK_loan_member" FromRole="member" ToRole="loan" />
+        </EntityType>
+        <EntityType Name="receipt">
+          <Key>
+            <PropertyRef Name="recode" />
+          </Key>
+          <Property Name="recode" Type="String" Nullable="false" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="reloan" Type="Int32" />
+          <Property Name="redate" Type="DateTime" Precision="0" />
+          <Property Name="remoney" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="rerecive" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="rechange" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="remem" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="loan" Relationship="CarFinance5917Model.FK_receipt_loan" FromRole="receipt" ToRole="loan" />
+        </EntityType>
+        <EntityType Name="type">
+          <Key>
+            <PropertyRef Name="typecode" />
+          </Key>
+          <Property Name="typecode" Type="Int32" Nullable="false" />
+          <Property Name="typename" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="login" Relationship="CarFinance5917Model.FK_login_type" FromRole="type" ToRole="login" />
+        </EntityType>
+        <EntityType Name="View_Car">
+          <Key>
+            <PropertyRef Name="gencode" />
+          </Key>
+          <Property Name="gencode" Type="Int32" Nullable="false" />
+          <Property Name="carbrand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="genname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="genyear" Type="String" MaxLength="4" FixedLength="false" Unicode="false" />
+          <Property Name="gencost" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="gendetail" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <Association Name="FK_gen_car">
+          <End Type="CarFinance5917Model.car" Role="car" Multiplicity="0..1" />
+          <End Type="CarFinance5917Model.gen" Role="gen" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="car">
+              <PropertyRef Name="carcode" />
+            </Principal>
+            <Dependent Role="gen">
+              <PropertyRef Name="gencar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_login_member">
+          <End Type="CarFinance5917Model.member" Role="member" Multiplicity="0..1" />
+          <End Type="CarFinance5917Model.login" Role="login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="memidcard" />
+            </Principal>
+            <Dependent Role="login">
+              <PropertyRef Name="logmem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_login_type">
+          <End Type="CarFinance5917Model.type" Role="type" Multiplicity="0..1" />
+          <End Type="CarFinance5917Model.login" Role="login" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="type">
+              <PropertyRef Name="typecode" />
+            </Principal>
+            <Dependent Role="login">
+              <PropertyRef Name="logtype" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="View_Customer">
+          <Key>
+            <PropertyRef Name="loancode" />
+          </Key>
+          <Property Name="loancode" Type="Int32" Nullable="false" />
+          <Property Name="memname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="memlname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="memtel" Type="String" MaxLength="10" FixedLength="false" Unicode="false" />
+          <Property Name="loanmoney" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="loanmonth" Type="Int32" />
+          <Property Name="loadpermonth" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="carbrand" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="genname" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="In_Ex">
+          <Key>
+            <PropertyRef Name="no" />
+          </Key>
+          <Property Name="no" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="income" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="expenditure" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="date" Type="DateTime" Precision="0" />
+        </EntityType>
+        <EntityType Name="loan">
+          <Key>
+            <PropertyRef Name="loancode" />
+          </Key>
+          <Property Name="loancode" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="loanmem" Type="String" MaxLength="13" FixedLength="false" Unicode="false" />
+          <Property Name="loanmoney" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="loandate" Type="DateTime" Precision="0" />
+          <Property Name="loanmonth" Type="Int32" />
+          <Property Name="loancar" Type="Int32" />
+          <Property Name="loaninterest" Type="Double" />
+          <Property Name="loadpermonth" Type="Decimal" Precision="19" Scale="4" />
+          <Property Name="loanlastdate" Type="DateTime" Precision="0" />
+          <NavigationProperty Name="gen" Relationship="CarFinance5917Model.FK_loan_gen" FromRole="loan" ToRole="gen" />
+          <NavigationProperty Name="member" Relationship="CarFinance5917Model.FK_loan_member" FromRole="loan" ToRole="member" />
+          <NavigationProperty Name="receipt" Relationship="CarFinance5917Model.FK_receipt_loan" FromRole="loan" ToRole="receipt" />
+        </EntityType>
+        <Association Name="FK_loan_gen">
+          <End Type="CarFinance5917Model.gen" Role="gen" Multiplicity="0..1" />
+          <End Type="CarFinance5917Model.loan" Role="loan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="gen">
+              <PropertyRef Name="gencode" />
+            </Principal>
+            <Dependent Role="loan">
+              <PropertyRef Name="loancar" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_loan_member">
+          <End Type="CarFinance5917Model.member" Role="member" Multiplicity="0..1" />
+          <End Type="CarFinance5917Model.loan" Role="loan" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="member">
+              <PropertyRef Name="memidcard" />
+            </Principal>
+            <Dependent Role="loan">
+              <PropertyRef Name="loanmem" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_receipt_loan">
+          <End Type="CarFinance5917Model.loan" Role="loan" Multiplicity="0..1" />
+          <End Type="CarFinance5917Model.receipt" Role="receipt" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="loan">
+              <PropertyRef Name="loancode" />
+            </Principal>
+            <Dependent Role="receipt">
+              <PropertyRef Name="reloan" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="CarFinance5917ModelStoreContainer" CdmEntityContainer="CarFinance5917Entities">
+          <EntitySetMapping Name="car">
+            <EntityTypeMapping TypeName="CarFinance5917Model.car">
+              <MappingFragment StoreEntitySet="car">
+                <ScalarProperty Name="carbrand" ColumnName="carbrand" />
+                <ScalarProperty Name="carcode" ColumnName="carcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="gen">
+            <EntityTypeMapping TypeName="CarFinance5917Model.gen">
+              <MappingFragment StoreEntitySet="gen">
+                <ScalarProperty Name="gencar" ColumnName="gencar" />
+                <ScalarProperty Name="gendetail" ColumnName="gendetail" />
+                <ScalarProperty Name="gencost" ColumnName="gencost" />
+                <ScalarProperty Name="genyear" ColumnName="genyear" />
+                <ScalarProperty Name="genname" ColumnName="genname" />
+                <ScalarProperty Name="gencode" ColumnName="gencode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="login">
+            <EntityTypeMapping TypeName="CarFinance5917Model.login">
+              <MappingFragment StoreEntitySet="login">
+                <ScalarProperty Name="logtype" ColumnName="logtype" />
+                <ScalarProperty Name="logpass" ColumnName="logpass" />
+                <ScalarProperty Name="loguser" ColumnName="loguser" />
+                <ScalarProperty Name="logmem" ColumnName="logmem" />
+                <ScalarProperty Name="logcode" ColumnName="logcode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="member">
+            <EntityTypeMapping TypeName="CarFinance5917Model.member">
+              <MappingFragment StoreEntitySet="member">
+                <ScalarProperty Name="memline" ColumnName="memline" />
+                <ScalarProperty Name="memtel" ColumnName="memtel" />
+                <ScalarProperty Name="memincome" ColumnName="memincome" />
+                <ScalarProperty Name="memcareer" ColumnName="memcareer" />
+                <ScalarProperty Name="memage" ColumnName="memage" />
+                <ScalarProperty Name="memlname" ColumnName="memlname" />
+                <ScalarProperty Name="memname" ColumnName="memname" />
+                <ScalarProperty Name="memidcard" ColumnName="memidcard" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="receipt">
+            <EntityTypeMapping TypeName="CarFinance5917Model.receipt">
+              <MappingFragment StoreEntitySet="receipt">
+                <ScalarProperty Name="remem" ColumnName="remem" />
+                <ScalarProperty Name="rechange" ColumnName="rechange" />
+                <ScalarProperty Name="rerecive" ColumnName="rerecive" />
+                <ScalarProperty Name="remoney" ColumnName="remoney" />
+                <ScalarProperty Name="redate" ColumnName="redate" />
+                <ScalarProperty Name="reloan" ColumnName="reloan" />
+                <ScalarProperty Name="recode" ColumnName="recode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="type">
+            <EntityTypeMapping TypeName="CarFinance5917Model.type">
+              <MappingFragment StoreEntitySet="type">
+                <ScalarProperty Name="typename" ColumnName="typename" />
+                <ScalarProperty Name="typecode" ColumnName="typecode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Car">
+            <EntityTypeMapping TypeName="CarFinance5917Model.View_Car">
+              <MappingFragment StoreEntitySet="View_Car">
+                <ScalarProperty Name="gendetail" ColumnName="gendetail" />
+                <ScalarProperty Name="gencost" ColumnName="gencost" />
+                <ScalarProperty Name="genyear" ColumnName="genyear" />
+                <ScalarProperty Name="genname" ColumnName="genname" />
+                <ScalarProperty Name="carbrand" ColumnName="carbrand" />
+                <ScalarProperty Name="gencode" ColumnName="gencode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="View_Customer">
+            <EntityTypeMapping TypeName="CarFinance5917Model.View_Customer">
+              <MappingFragment StoreEntitySet="View_Customer">
+                <ScalarProperty Name="genname" ColumnName="genname" />
+                <ScalarProperty Name="carbrand" ColumnName="carbrand" />
+                <ScalarProperty Name="loadpermonth" ColumnName="loadpermonth" />
+                <ScalarProperty Name="loanmonth" ColumnName="loanmonth" />
+                <ScalarProperty Name="loanmoney" ColumnName="loanmoney" />
+                <ScalarProperty Name="memtel" ColumnName="memtel" />
+                <ScalarProperty Name="memlname" ColumnName="memlname" />
+                <ScalarProperty Name="memname" ColumnName="memname" />
+                <ScalarProperty Name="loancode" ColumnName="loancode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="In_Ex">
+            <EntityTypeMapping TypeName="CarFinance5917Model.In_Ex">
+              <MappingFragment StoreEntitySet="In_Ex">
+                <ScalarProperty Name="date" ColumnName="date" />
+                <ScalarProperty Name="expenditure" ColumnName="expenditure" />
+                <ScalarProperty Name="income" ColumnName="income" />
+                <ScalarProperty Name="no" ColumnName="no" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loan">
+            <EntityTypeMapping TypeName="CarFinance5917Model.loan">
+              <MappingFragment StoreEntitySet="loan">
+                <ScalarProperty Name="loanlastdate" ColumnName="loanlastdate" />
+                <ScalarProperty Name="loadpermonth" ColumnName="loadpermonth" />
+                <ScalarProperty Name="loaninterest" ColumnName="loaninterest" />
+                <ScalarProperty Name="loancar" ColumnName="loancar" />
+                <ScalarProperty Name="loanmonth" ColumnName="loanmonth" />
+                <ScalarProperty Name="loandate" ColumnName="loandate" />
+                <ScalarProperty Name="loanmoney" ColumnName="loanmoney" />
+                <ScalarProperty Name="loanmem" ColumnName="loanmem" />
+                <ScalarProperty Name="loancode" ColumnName="loancode" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

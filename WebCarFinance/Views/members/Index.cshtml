@@ -1,0 +1,77 @@
+﻿@model IEnumerable<APICarFinance.member>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout - Login.cshtml";
+}
+
+<a href='@Url.Action("Index", "Home")' class="btn btn-outline-secondary">กลับ</a>
+
+<table id="example" class="table table-striped table-bordered nowrap" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.memname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.memlname)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.memage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.memcareer)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.memincome)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.memtel)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.memline)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.memname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.memlname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.memage)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.memcareer)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.memincome)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.memtel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.memline)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<link href="~/Content/DataTables-1.10.18/dataTables.bootstrap4.css" rel="stylesheet" />
+
+@section Scripts {
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script src="~/Content/DataTables-1.10.18/js/dataTables.bootstrap4.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready( function () {
+            $('#example').DataTable();
+        } );
+    </script>
+}

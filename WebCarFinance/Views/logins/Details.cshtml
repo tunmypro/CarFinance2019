@@ -1,0 +1,48 @@
+﻿@model APICarFinance.login
+
+@{
+    ViewBag.Title = "รายละเอียดข้อมูล";
+}
+
+<h2>รายละเอียดข้อมูล</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.loguser)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loguser)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.logpass)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.logpass)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.member.memname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.member.memname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.type.typename)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.type.typename)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.logcode })
+</p>

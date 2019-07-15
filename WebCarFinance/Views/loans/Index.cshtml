@@ -1,0 +1,60 @@
+﻿@model IEnumerable<APICarFinance.loan>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.loanmoney)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.loandate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.loanmonth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.loaninterest)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.loadpermonth)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.gen.genname)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.member.memname)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.loanmoney)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.loandate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.loanmonth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.loaninterest)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.loadpermonth)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.gen.genname)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.member.memname)
+        </td>
+    </tr>
+}
+
+</table>

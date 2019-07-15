@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<MasterDetailPage
+    x:Class="AppCarFinance.MainPage"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AppCarFinance"
+    Title="CarFinance"
+    MasterBehavior="Popover">
+
+    <MasterDetailPage.Master>
+        <ContentPage
+            Title="Master"
+            Padding="10"
+            BackgroundColor="LightGray">
+            <ContentPage.Content>
+                <StackLayout Margin="5,30,5,5">
+                    <Label FontSize="Large" Text="เมนู" />
+
+                    <Button
+                        BackgroundColor="PaleGreen"
+                        Clicked="Button_OnClicked"
+                        Text="รายชื่อ" />
+
+                    <Button
+                        BackgroundColor="PaleGreen"
+                        Clicked="Button_OnClicked2"
+                        Text="ประเมิณราคารถ" />
+
+                    <Button
+                        BackgroundColor="PaleGreen"
+                        Clicked="Button_OnClicked4"
+                        Text="ค้นหาจุดชำระเงิน" />
+
+                    <Button
+                        BackgroundColor="PaleGreen"
+                        Clicked="Button_OnClicked3"
+                        Text="เข้าสู่ระบบ" />
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Master>
+
+    <MasterDetailPage.Detail>
+        <ContentPage Padding="10">
+            <ContentPage.Content>
+                <StackLayout Margin="5,30,5,5">
+                    <Label Text="Detail Page" />
+                </StackLayout>
+            </ContentPage.Content>
+        </ContentPage>
+    </MasterDetailPage.Detail>
+
+</MasterDetailPage>

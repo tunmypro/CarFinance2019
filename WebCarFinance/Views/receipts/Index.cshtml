@@ -1,0 +1,53 @@
+﻿@model IEnumerable<APICarFinance.receipt>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.redate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.remoney)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rerecive)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.rechange)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.remem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.loan.loanmem)
+        </th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.redate)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.remoney)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rerecive)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.rechange)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.remem)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.loan.loanmem)
+            </td>
+        </tr>
+    }
+
+</table>

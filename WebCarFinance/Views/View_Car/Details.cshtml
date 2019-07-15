@@ -1,0 +1,170 @@
+﻿@using APICarFinance
+@model APICarFinance.View_Car
+
+@{
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_MyLayout.cshtml";
+}
+
+<style>
+    dt {
+        float: left;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        font-size: 25px;
+    }
+
+    dd {
+        float: left;
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        font-size: 25px;
+    }
+</style>
+
+<script src="~/Scripts/jquery-3.4.1.min.js"></script>
+
+    <div class="container">
+        <div class="row">
+            <div class="col-5">
+                <div class="form-group">
+                    @if (ViewBag.carlist != null)
+                    {
+                        <h3 style="text-align: center;">เลือกยี่ห้อรถที่ต้องการ</h3>
+                        @Html.DropDownListFor(model => model.CarID, ViewBag.carlist as SelectList, "--เลือกรถ--", new { @class = "form-control" })
+                    }
+                </div>
+            </div>
+            <div class="col-4">
+                <div class="form-group" id="nameSelect">
+                    <h3 style="text-align: center;">เลือกรุ่นรถที่ต้องการ</h3>
+                    @Html.DropDownListFor(model => model.GenID, new SelectList(" "), "--เลือกรุ่น--", new { @class = "form-control" })
+                </div>
+            </div>
+            <div class="col-3">
+                <h3>กดค้นหาราคา</h3>
+                <button id="myButton" class="btn btn-outline-success" type="submit">ค้นหา</button>
+            </div>
+        </div>
+        <div class="row" style="text-align: center;">
+            <div class="col">
+                <dl>
+                    <dt>
+                        ยี่ห้อรถยนต์
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.carbrand)
+                    </dd>
+
+                    <dt>
+                        รุ่นรถยนต์
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.genname)
+                    </dd>
+                </dl>
+            </div>
+            <div class="col">
+                <dl>
+                    <dt>
+                        ปีรถยนต์
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.genyear)
+                    </dd>
+
+                    <dt>
+                        ราคารถยนต์
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.gencost)
+                    </dd>
+                    <dt>
+                        รายละเอียดเพิ่มเติม
+                    </dt>
+
+                    <dd>
+                        @Html.DisplayFor(model => model.gendetail)
+                    </dd>
+
+                </dl>
+            </div>
+        </div>
+        @{
+            var cost = Model.gencost;
+        }
+
+        <p style="text-align: center; font-size:25px;">
+            เลือกจำนวนเงินที่ต้องการกู้(ดอกเบี้ย 5%)
+        </p>
+        <p style="text-align:center; font-size: 25px;">
+            จำนวนเงินที่กู้ : <span id="demo"></span>
+        </p>
+        <div id="cost">
+            <input type="range" class="custom-range" min="0" max=@cost value=@cost class="slider" step="1000" id="myRange">
+        </div>
+    </div>
+
+<div class="row">
+    <div class="col-6">
+        <p style="text-align:center; font-size: 25px;">ผ่อน 12 เดือน : <span id="cost1"></span></p>
+        <p style="text-align:center; font-size: 25px;">ผ่อน 24 เดือน : <span id="cost2"></span></p>
+    </div>
+    <div class="col-6">
+        <p style="font-size: 25px;">ผ่อน 36 เดือน : <span id="cost3"></span></p>
+        <p style="font-size: 25px;">ผ่อน 48 เดือน : <span id="cost4"></span></p>
+    </div>
+</div>
+
+
+<script>
+    $(document).ready(function () {
+        $("#CarID").change(function () {
+            $.get("/View_Car/selectlist1",
+                { CarID: $("#CarID").val() },
+                function (data) {
+                    $("#GenID").empty();
+                    $.each(data,
+                        function (index, row) {
+                            $("#GenID").append("<option value='" + row.gencode + "'>" + row.genname + "</option>");
+                        });
+                });
+        });
+    });
+</script>
+<script>
+    document.getElementById("myButton").onclick = function() {
+        var s = $("#GenID").val();
+        location.href = '@Url.Action("Details","View_Car")?id=' + s;
+    };
+</script>
+<script>
+    var slider = document.getElementById("myRange");
+    var output = document.getElementById("demo");
+    var cost1 = document.getElementById("cost1");
+    var cost2 = document.getElementById("cost2");
+    var cost3 = document.getElementById("cost3");
+    var cost4 = document.getElementById("cost4");
+    output.innerHTML = slider.value;
+    cost1.innerHTML = (@Model.gencost * 1.05 / 12).toFixed(2);
+    cost2.innerHTML = (@Model.gencost * 1.05 / 24).toFixed(2);
+    cost3.innerHTML = (@Model.gencost * 1.05 / 36).toFixed(2);
+    cost4.innerHTML = (@Model.gencost * 1.05 / 48).toFixed(2);
+
+    $("#cost").on('change', "input", function (event) {
+        cost1.innerHTML = (this.value * 1.05 / 12).toFixed(2);
+        cost2.innerHTML = (this.value * 1.05 / 24).toFixed(2);
+        cost3.innerHTML = (this.value * 1.05 / 36).toFixed(2);
+        cost4.innerHTML = (this.value * 1.05 / 48).toFixed(2);
+    });
+
+    slider.oninput = function () {
+        output.innerHTML = this.value;
+    }
+</script>

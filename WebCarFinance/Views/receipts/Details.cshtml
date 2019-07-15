@@ -1,0 +1,66 @@
+﻿@model APICarFinance.receipt
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>receipt</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.redate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.redate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.remoney)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.remoney)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rerecive)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rerecive)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.rechange)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.rechange)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.remem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.remem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.loan.loanmem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loan.loanmem)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.recode }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>

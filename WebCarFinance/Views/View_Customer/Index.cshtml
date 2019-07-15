@@ -1,0 +1,98 @@
+﻿@model IEnumerable<APICarFinance.View_Customer>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout - Login.cshtml";
+}
+<a href='@Url.Action("Index", "Home")' class="btn btn-outline-secondary">กลับ</a>
+
+<table id="example" class="table table-striped table-bordered nowrap" style="width:100%">
+    <thead>
+        <tr>
+            <th>
+                ชื่อ
+            </th>
+            <th>
+                นามสกุล
+            </th>
+            <th>
+                เบอร์โทรศัพท์
+            </th>
+            <th>
+                ยอดเงินกู้(คงเหลือ)
+            </th>
+            <th>
+                จำนวนเดือน(คงเหลือ)
+            </th>
+            <th>
+                ยอดจ่าย(ต่อเดือน)
+            </th>
+            <th>
+                ยี่ห้อรถยนต์
+            </th>
+            <th>ชำระเงิน</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.memname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.memlname)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.memtel)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.loanmoney)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.loanmonth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.loadpermonth)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.carbrand)
+                </td>
+                <td></td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<link href="~/Content/DataTables-1.10.18/dataTables.bootstrap4.css" rel="stylesheet" />
+
+@section Scripts {
+    <script type="text/javascript" charset="utf8" src="//cdn.datatables.net/1.10.19/js/jquery.dataTables.js"></script>
+    <script src="~/Content/DataTables-1.10.18/js/dataTables.bootstrap4.js"></script>
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            var table = $('#example').DataTable({
+                "columnDefs": [
+                    {
+                        "targets": 7,
+                        "data": null,
+                        "defaultContent": "<button class=" + '"btn btn-warning"' + ">ชำระเงิน</button>"
+
+                    }
+                ]
+            });
+
+            $('#example tbody').on('click',
+                'button',
+                function () {
+                    var data = table.row($(this).parents('tr')).data();
+                    window.location.href = "http://localhost:51084/View_Customer/getname/?name=" +
+                        data[0] +
+                        "&lname=" +
+                        data[1];
+
+                });
+        });
+    </script>
+}

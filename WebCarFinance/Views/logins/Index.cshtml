@@ -1,0 +1,75 @@
+﻿@model APICarFinance.login
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_Layout - Login.cshtml";
+}
+
+<head>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.6.3/css/all.css" />
+    <style>
+        .container {
+            border: 2px solid blue;
+            text-align: center;
+            height: 500px;
+            width: 400px;
+        }
+
+        body {
+            padding: 70px;
+        }
+
+        h1 {
+            margin: auto;
+        }
+
+        .row {
+            height: 90px;
+            width: 396px;
+            background-color: paleturquoise;
+        }
+    </style>
+</head>
+
+@using (Html.BeginForm("Index", "logins", FormMethod.Post,new { enctype = "multipart/form-data" }))
+{
+    <a href='@Url.Action("Index", "Home")' class="btn btn-outline-secondary">กลับ</a>
+
+    <div class="container">
+        <div class="row">
+            <h1><i class="fa fa-lock" aria-hidden="true"></i> เข้าสู่ระบบ</h1>
+
+            @if (!string.IsNullOrEmpty(ViewBag.alert))
+            {
+                <script type="text/javascript">
+                    alert("@ViewBag.alert");
+                </script>
+            }
+
+        </div><br /><br />
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fas fa-user-tie"></i></span>
+            </div>
+            @Html.EditorFor(model => model.loguser, new { htmlAttributes = new { @class = "form-control", placeholder = "กรุณาใส่ยูสเซอร์เนม", autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.loguser, "", new { @class = "text-danger" })
+        </div><br />
+
+        <div class="input-group">
+            <div class="input-group-prepend">
+                <span class="input-group-text"><i class="fa fa-key icon"></i></span>
+            </div>
+            @Html.EditorFor(model => model.logpass, new { htmlAttributes = new { @class = "form-control", @Type = "password", placeholder = "กรุณาใส่พาสเวิร์ด", autocomplete = "off" } })
+            @Html.ValidationMessageFor(model => model.logpass, "", new { @class = "text-danger" })
+        </div><br />
+        <button type="submit" class="btn btn-success"><span class="glyphicon glyphicon-off"></span> เข้าใช้งาน</button>
+        <br />
+        <br /> <center><div style="border:1px solid black;height:1px;width:300px;"></div></center><br />
+        <div class="footer">
+            <p>ยังไม่มี บัญชีใช้งาน! <a href='@Url.Action("Create", "members")'>กดได้ที่นี้</a></p>
+        </div>
+
+    </div>
+}
+

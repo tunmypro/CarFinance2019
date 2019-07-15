@@ -1,0 +1,81 @@
+﻿@model APICarFinance.loan
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>loan</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.loanmoney)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loanmoney)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.loandate)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loandate)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.loanmonth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loanmonth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.loaninterest)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loaninterest)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.loadpermonth)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.loadpermonth)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.gen.genname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.gen.genname)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.member.memname)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.member.memname)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

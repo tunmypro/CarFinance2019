@@ -1,0 +1,77 @@
+﻿@model APICarFinance.View_Customer
+
+@{
+    ViewBag.Title = "Shows";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<h2>ข้อมูลการกู้</h2>
+
+<div class="row">
+    <hr />
+    <div class="col-sm-4">
+        <dl class="dl-horizontal">
+
+            <dt>
+                ชื่อ
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.memname)
+            </dd>
+
+            <dt>
+                นามสกุล
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.memlname)
+            </dd>
+
+            <dt>
+                เบอร์โทรศัพท์
+            </dt>
+
+
+            <dd>
+                @Html.DisplayFor(model => model.memtel)
+            </dd>
+        </dl>
+    </div>
+    <div class="col-sm-4">
+        <dl class="dl-horizontal">
+
+            <dt>
+                ยอดเงินกู้(คงเหลือ)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.loanmoney)
+            </dd>
+
+            <dt>
+                จำนวนเดือน(คงเหลือ)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.loanmonth)
+            </dd>
+
+            <dt>
+                ยอดจ่าย(ต่อเดือน)
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.loadpermonth)
+            </dd>
+
+            <dt>
+                ยี่ห้อรถยนต์
+            </dt>
+
+            <dd>
+                @Html.DisplayFor(model => model.carbrand)
+            </dd>
+        </dl>
+    </div>
+</div>
