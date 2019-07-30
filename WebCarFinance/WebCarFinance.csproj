@@ -210,6 +210,7 @@
     <Content Include="Content2\finances\fonts\icomoon\style.css" />
     <Content Include="Content2\finances\images\about_2.jpg" />
     <Content Include="Content2\finances\images\alexander-mils-1469813-unsplash.jpg" />
+    <Content Include="Content2\finances\images\back_hero.jpg" />
     <Content Include="Content2\finances\images\flaticon-svg\backup.txt" />
     <Content Include="Content2\finances\images\flaticon-svg\svg\001-wallet.svg" />
     <Content Include="Content2\finances\images\flaticon-svg\svg\002-rich.svg" />
@@ -219,7 +220,6 @@
     <Content Include="Content2\finances\images\flaticon-svg\svg\006-credit-card.svg" />
     <Content Include="Content2\finances\images\flaticon-svg\svg\007-piggy-bank.svg" />
     <Content Include="Content2\finances\images\hero_1.jpg" />
-    <Content Include="Content2\finances\images\hero_2.jpg" />
     <Content Include="Content2\finances\images\img_1.jpg" />
     <Content Include="Content2\finances\images\img_2.jpg" />
     <Content Include="Content2\finances\images\img_3.jpg" />

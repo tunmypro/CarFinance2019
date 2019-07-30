@@ -2,8 +2,16 @@
 <ContentPage
     x:Class="AppCar.View.MapPage"
     xmlns="http://xamarin.com/schemas/2014/forms"
-    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:AppCar;assembly=AppCar"
+    xmlns:viewModel="clr-namespace:AppCar.ViewModel;assembly=AppCar">
 
-    <StackLayout />
+    <ContentPage.Content>
+        <viewModel:CustomMap
+            x:Name="customMap"
+            HeightRequest="{x:Static local:App.ScreenHeight}"
+            MapType="Street"
+            WidthRequest="{x:Static local:App.ScreenWidth}" />
+    </ContentPage.Content>
 
 </ContentPage>

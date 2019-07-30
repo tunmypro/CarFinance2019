@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppCar.View.Home"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml">
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame
+                Margin="30"
+                BackgroundColor="LightBlue"
+                HasShadow="True"
+                HorizontalOptions="FillAndExpand">
+
+                <StackLayout Padding="20" Orientation="Horizontal">
+                    <Label
+                        FontSize="Large"
+                        Text="อยากมีเงินใช้ รถคุณช่วยได้ ติดต่อได้ที่สาขาใกล้บ้านคุณ.กดค้นหาจุดชำระเงินด้านบนเพื่อหาจุดใกล้คุณ.ไม่ทราบราคารถ ? ไม่ทราบว่ารถของคุณจะได้เงินเท่าไหร่กดประเมิณราคารถ เพื่อดูราคาเบื้องต้นด้านบนได้เลยเบอร์ด่วน สาขาใหญ่ Tel:098-XXXXXXX"
+                        TextColor="Black" />
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

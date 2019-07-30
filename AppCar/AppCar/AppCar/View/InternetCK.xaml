@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppCar.View.InternetCK"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    Title="การเชื่อมต่อล้มเหลว">
+    <ContentPage.Content>
+        <StackLayout>
+            <Label
+                HorizontalOptions="CenterAndExpand"
+                Text="คุณไม่ได้เชื่อมต่ออินเตอร์เน็ต กรุณาลองใหม่อีกครั้ง"
+                VerticalOptions="CenterAndExpand" />
+            <Button Clicked="Button_OnClicked" Text="ออกจากโปรแกรม" />
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

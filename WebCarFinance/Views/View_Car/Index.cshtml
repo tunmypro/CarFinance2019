@@ -5,43 +5,48 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.carbrand)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.genname)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.genyear)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.gencost)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.gendetail)
-        </th>
-    </tr>
+<div class="card text-white bg-info mb-3" style="max-width: 100rem;">
+    <div class="card-body">
+        <table class="table">
+            <tr>
+                <th>
+                    ยี่ห้อรถยนต์
+                </th>
+                <th>
+                    รุ่น
+                </th>
+                <th>
+                    ปี
+                </th>
+                <th>
+                    ราคา
+                </th>
+                <th>
+                    รายละเอียด
+                </th>
+            </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.carbrand)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.genname)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.genyear)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.gencost)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.gendetail)
-        </td>
-    </tr>
-}
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.carbrand)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.genname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.genyear)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.gencost)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.gendetail)
+                    </td>
+                </tr>
+            }
 
-</table>
+        </table>
+    </div>
+</div>

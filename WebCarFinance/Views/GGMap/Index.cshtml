@@ -1,7 +1,7 @@
 ﻿
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout - Login.cshtml";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
 
 <!DOCTYPE html>
@@ -24,7 +24,7 @@
 </head>
 <body>
 
-    <div id="map"></div>
+        <div id="map"></div>
     <script>
         function initMap() {
             var map, infoWindow;
@@ -76,9 +76,7 @@
             infoWindow.open(map);
         }
     </script>
-<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlf7y8WSGHqqcy8JMsqm2gBOFNRTqyYaY&callback=initMap"
-        async defer></script>
-<a href='@Url.Action("Index", "Home")' class="btn btn-outline-secondary">กลับ</a>
-
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDlf7y8WSGHqqcy8JMsqm2gBOFNRTqyYaY&callback=initMap"
+            async defer></script>
 </body>
 </html>

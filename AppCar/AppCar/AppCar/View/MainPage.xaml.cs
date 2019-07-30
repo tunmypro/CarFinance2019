@@ -14,14 +14,8 @@ namespace AppCarFinance
         {
             InitializeComponent();
 
-            Detail = new NavigationPage(new Page1());
+            Detail = new NavigationPage(new Home());
 
-            IsPresented = false;
-        }
-
-        private void Button_OnClicked(object sender, EventArgs e)
-        {
-            Detail = new NavigationPage(new Page1());
             IsPresented = false;
         }
 
@@ -40,6 +34,12 @@ namespace AppCarFinance
         private void Button_OnClicked4(object sender, EventArgs e)
         {
             Detail = new NavigationPage(new MapPage());
+            IsPresented = false;
+        }
+
+        private void Button_OnClicked6(object sender, EventArgs e)
+        {
+            Detail = new NavigationPage(new ViewMember());
             IsPresented = false;
         }
     }

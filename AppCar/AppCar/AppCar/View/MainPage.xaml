@@ -18,11 +18,6 @@
 
                     <Button
                         BackgroundColor="PaleGreen"
-                        Clicked="Button_OnClicked"
-                        Text="รายชื่อ" />
-
-                    <Button
-                        BackgroundColor="PaleGreen"
                         Clicked="Button_OnClicked2"
                         Text="ประเมิณราคารถ" />
 
@@ -32,9 +27,14 @@
                         Text="ค้นหาจุดชำระเงิน" />
 
                     <Button
+                        x:Name="Button1"
                         BackgroundColor="PaleGreen"
                         Clicked="Button_OnClicked3"
+                        IsEnabled="True"
+                        IsVisible="True"
                         Text="เข้าสู่ระบบ" />
+
+
                 </StackLayout>
             </ContentPage.Content>
         </ContentPage>

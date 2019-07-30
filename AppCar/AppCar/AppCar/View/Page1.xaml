@@ -1,18 +1,22 @@
 ﻿<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage
-    x:Class="AppCarFinance.Page1"
+    x:Class="AppCar.View.Page1"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:viewModel1="clr-namespace:AppCarFinance.ViewModel;assembly=AppCar"
-    Title="รายชื่อ">
+    xmlns:viewModel="clr-namespace:AppCarFinance.ViewModel;assembly=AppCar"
+    Title="ข้อมูลสมาชิก">
 
     <ContentPage.BindingContext>
-        <viewModel1:MemberViewModel />
+        <viewModel:MemberViewModel />
     </ContentPage.BindingContext>
 
     <ContentPage.Content>
         <StackLayout>
-            <ListView HasUnevenRows="True" ItemsSource="{Binding listMemberses}">
+            <SearchBar x:Name="SearchBar" TextChanged="SearchBar_OnTextChanged" />
+            <ListView
+                x:Name="ListView"
+                HasUnevenRows="True"
+                ItemsSource="{Binding listMemberses}">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
@@ -20,8 +24,8 @@
                                 <Label FontSize="Medium" Text="ชื่อ" />
                                 <Label FontSize="Medium" Text="{Binding memname}" />
                                 <Label FontSize="Medium" Text="{Binding memlname}" />
-                                <Label FontSize="Medium" Text="อายุ" />
-                                <Label FontSize="Medium" Text="{Binding memage}" />
+                                <Label FontSize="Medium" Text="เบอร์" />
+                                <Label FontSize="Medium" Text="{Binding memtel}" />
                             </StackLayout>
                         </ViewCell>
                     </DataTemplate>
@@ -29,5 +33,4 @@
             </ListView>
         </StackLayout>
     </ContentPage.Content>
-
 </ContentPage>

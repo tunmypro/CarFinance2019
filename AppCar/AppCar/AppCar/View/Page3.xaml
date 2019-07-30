@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppCar.View.Page3"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModel="clr-namespace:AppCar.ViewModel;assembly=AppCar"
+    Title="สรุปรายได้">
+
+    <ContentPage.BindingContext>
+        <viewModel:IncomeViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <Frame
+                Margin="30"
+                BackgroundColor="Chartreuse"
+                HasShadow="True"
+                HorizontalOptions="FillAndExpand">
+
+                <StackLayout Padding="20" Orientation="Horizontal">
+                    <Label
+                        FontSize="Large"
+                        Text="รายได้"
+                        TextColor="Blue" />
+                    <Label
+                        x:Name="Label1"
+                        FontSize="Medium"
+                        TextColor="Blue" />
+                </StackLayout>
+            </Frame>
+            <Frame
+                Margin="30"
+                BackgroundColor="DeepPink"
+                HasShadow="True"
+                HorizontalOptions="FillAndExpand">
+
+                <StackLayout Padding="20" Orientation="Horizontal">
+                    <Label
+                        FontSize="Large"
+                        Text="รายจ่าย"
+                        TextColor="Chartreuse" />
+                    <Label
+                        x:Name="Label2"
+                        FontSize="Medium"
+                        TextColor="Chartreuse" />
+                </StackLayout>
+            </Frame>
+            <Frame
+                Margin="30"
+                BackgroundColor="Blue"
+                HasShadow="True"
+                HorizontalOptions="FillAndExpand">
+
+                <StackLayout Padding="20" Orientation="Horizontal">
+                    <Label
+                        FontSize="Large"
+                        Text="รายได้สุทธิ"
+                        TextColor="DeepPink" />
+                    <Label
+                        x:Name="Label3"
+                        FontSize="Medium"
+                        TextColor="DeepPink" />
+                </StackLayout>
+            </Frame>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

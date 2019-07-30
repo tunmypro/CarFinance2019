@@ -10,80 +10,84 @@
         alert("@ViewBag.alert");
     </script>
 }
+    <div class="card text-white bg-info mb-3" style="max-width: 100rem;">
 
-<h2>ข้อมูล</h2>
+        <div class="card-header" style="font-size : 30px">ข้อมูล</div>
+        <div class="card-body">
 
-<div class="row">
-    <h4>รายละเอียดข้อมูล</h4>
-    <hr />
-    <div class="col-sm-4">
-        <dl class="dl-horizontal">
+            <div class="row">
+                <h3>รายละเอียดข้อมูล</h3>
+                <hr />
+                <div class="col-sm-4">
+                    <dl class="dl-horizontal">
 
-            <dt>
-                @Html.DisplayNameFor(model => model.memname)
-            </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.memname)
+                        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.memname)
-            </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.memname)
+                        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.memlname)
-            </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.memlname)
+                        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.memlname)
-            </dd>
+                        <dd>
+                            @Html.DisplayFor(model => model.memlname)
+                        </dd>
 
-            <dt>
-                @Html.DisplayNameFor(model => model.memage)
-            </dt>
+                        <dt>
+                            @Html.DisplayNameFor(model => model.memage)
+                        </dt>
 
-            <dd>
-                @Html.DisplayFor(model => model.memage)
-            </dd>
-        </dl>
-        <p>
-            @Html.ActionLink("แก้ไขข้อมูล", "Edit", new { id = Model.memidcard })
-        </p>
+                        <dd>
+                            @Html.DisplayFor(model => model.memage)
+                        </dd>
+                    </dl>
+                    <p>
+                        @Html.ActionLink("แก้ไขข้อมูล", "Edit", new { id = Model.memidcard })
+                    </p>
+                </div>
+
+                <div class="col-sm-4">
+                    <dl class="dl-horizontal">
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.memcareer)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.memcareer)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.memincome)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.memincome)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.memtel)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.memtel)
+                        </dd>
+
+                        <dt>
+                            @Html.DisplayNameFor(model => model.memline)
+                        </dt>
+
+                        <dd>
+                            @Html.DisplayFor(model => model.memline)
+                        </dd>
+
+                    </dl>
+                </div>
+            </div>
+        </div>
     </div>
-
-    <div class="col-sm-4">
-        <dl class="dl-horizontal">
-
-            <dt>
-                @Html.DisplayNameFor(model => model.memcareer)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.memcareer)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.memincome)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.memincome)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.memtel)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.memtel)
-            </dd>
-
-            <dt>
-                @Html.DisplayNameFor(model => model.memline)
-            </dt>
-
-            <dd>
-                @Html.DisplayFor(model => model.memline)
-            </dd>
-
-        </dl>
-    </div>
-</div>
 

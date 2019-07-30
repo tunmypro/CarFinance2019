@@ -3,6 +3,7 @@
     x:Class="AppCarFinance.Page2"
     xmlns="http://xamarin.com/schemas/2014/forms"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:forms="clr-namespace:Microcharts.Forms;assembly=Microcharts.Forms"
     xmlns:viewModel="clr-namespace:AppCar.ViewModel;assembly=AppCar"
     Title="ประเมิณราคารถ">
 
@@ -16,6 +17,9 @@
                 <RowDefinition Height="80" />
                 <RowDefinition Height="80" />
                 <RowDefinition Height="50" />
+                <RowDefinition Height="50" />
+                <RowDefinition Height="30" />
+                <RowDefinition Height="*" />
             </Grid.RowDefinitions>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="*" />
@@ -27,25 +31,50 @@
                 Grid.Row="0"
                 Grid.Column="0"
                 ItemDisplayBinding="{Binding carbrand}"
-                ItemsSource="{Binding carList}"
+                ItemsSource="{Binding carList, Mode=TwoWay}"
                 SelectedIndexChanged="getgen" />
             <Picker
                 x:Name="Picker2"
                 Title="-----กรุณาเลือกรุ่นรถ-----"
                 Grid.Row="0"
                 Grid.Column="1"
-                SelectedItem="{Binding SelectedCars}" />
-            <Button
+                SelectedIndexChanged="getprice" />
+            <Label
+                x:Name="Label"
                 Grid.Row="1"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
-                Command="{Binding getPrice}" />
+                FontSize="Large"
+                HorizontalOptions="CenterAndExpand"
+                Text="ราคา :" />
             <Label
                 Grid.Row="2"
                 Grid.Column="0"
                 Grid.ColumnSpan="2"
                 FontSize="Large"
-                Text="{Binding price, Mode=TwoWay}" />
+                HorizontalOptions="CenterAndExpand"
+                Text="เลือกอัตตราผ่อนชำระต่อเดือน" />
+            <Slider
+                x:Name="Slider"
+                Grid.Row="3"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                HorizontalOptions="FillAndExpand"
+                ValueChanged="Handle_ValueChanged" />
+            <Label
+                x:Name="DisplayLabel"
+                Grid.Row="4"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                FontSize="Large"
+                HorizontalOptions="Center"
+                VerticalOptions="CenterAndExpand" />
+            <forms:ChartView
+                x:Name="ChartView"
+                Grid.Row="5"
+                Grid.Column="0"
+                Grid.ColumnSpan="2"
+                Margin="20" />
         </Grid>
     </ContentPage.Content>
 </ContentPage>

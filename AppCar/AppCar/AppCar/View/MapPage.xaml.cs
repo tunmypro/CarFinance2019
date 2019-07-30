@@ -14,50 +14,34 @@ namespace AppCar.View
     [XamlCompilation(XamlCompilationOptions.Compile)]
     public partial class MapPage : ContentPage
     {
-        CustomMap customMap = new CustomMap
-        {
-            MapType = MapType.Street,
-            WidthRequest = App.ScreenWidth,
-            HeightRequest = App.ScreenHeigth,
-            IsShowingUser = true
-        };
 
         public MapPage()
         {
             InitializeComponent();
 
-            Maps();
-        }
-
-        private void Maps()
-        {
-            Position onePosition = new Position(14.0227797, 99.5328115);
-            Position twoPosition = new Position(14.0227797, 99.5328300);
-
-            List<Position> listPoint = new List<Position>();
-            listPoint.Add(onePosition);
-            listPoint.Add(twoPosition);
-
-            var startPin = new CustomPin
+            var customMap = new CustomMap
             {
-                Pin = new Pin
-                {
-                    Type = PinType.Place,
-                    Position = new Position(onePosition.Latitude, onePosition.Longitude),
-                    Label = "Start",
-                    Address = ""
-                },
-                Id = "Start Point",
-                Url = "Test"
+                MapType = MapType.Street,
+                WidthRequest = App.ScreenWidth,
+                HeightRequest = App.ScreenHeight
             };
-            customMap.RouteCoordinates.Clear();
-            foreach (var item in listPoint)
+
+            var pin = new CustomPin
             {
-                customMap.RouteCoordinates.Add(new Position(item.Latitude, item.Longitude));
-            }
-            customMap.CustomPins = new List<CustomPin> { startPin };
+                Type = PinType.Place,
+                Position = new Position(14.022281, 99.533101),
+                Label = "สาขา เมืองกาญ",
+                Address = "ทดสอบ",
+                Id = "Xamarin",
+                Url = "http://xamarin.com/about/"
+
+            };
+
+            customMap.CustomPins = new List<CustomPin> { pin };
+            customMap.Pins.Add(pin);
+            customMap.MoveToRegion(MapSpan.FromCenterAndRadius(new Position(14.022281, 99.533101), Distance.FromKilometers(1.0)));
+
             Content = customMap;
-            //customMap.MoveToRegion(MapSpan.FromCenterAndRadius(onePosition, Distance.FromMiles(1.0)));
         }
     }
 }

@@ -1,5 +1,7 @@
 ﻿using System;
+using AppCar.View;
 using AppCarFinance;
+using Plugin.Connectivity;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -8,13 +10,20 @@ namespace AppCar
 {
     public partial class App : Application
     {
+        public static double ScreenHeight;
         public static double ScreenWidth;
-        public static double ScreenHeigth;
         public App()
         {
             InitializeComponent();
 
-            MainPage = new NavigationPage(new MainPage());
+            if (CrossConnectivity.Current.IsConnected)
+            {
+                MainPage = new NavigationPage(new MainPage());
+            }
+            else
+            {
+                MainPage = new NavigationPage(new InternetCK());
+            }
         }
 
         protected override void OnStart()

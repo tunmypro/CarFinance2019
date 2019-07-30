@@ -5,10 +5,8 @@ using Xamarin.Forms.Maps;
 
 namespace AppCar.ViewModel
 {
-    public class CustomPin
+    public class CustomPin : Pin
     {
-        public Pin Pin { get; set; }
-
         public string Id { get; set; }
 
         public string Url { get; set; }

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage
+    x:Class="AppCar.View.staleMember"
+    xmlns="http://xamarin.com/schemas/2014/forms"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:viewModel="clr-namespace:AppCar.ViewModel;assembly=AppCar"
+    Title="ค้างชำระ">
+    <ContentPage.BindingContext>
+        <viewModel:staleViewModel />
+    </ContentPage.BindingContext>
+    <ContentPage.Content>
+        <StackLayout>
+            <ListView HasUnevenRows="True" ItemsSource="{Binding listStale}">
+                <ListView.ItemTemplate>
+                    <DataTemplate>
+                        <ViewCell>
+                            <StackLayout Orientation="Horizontal">
+                                <Label FontSize="Medium" Text="ชื่อ" />
+                                <Label FontSize="Medium" Text="{Binding memname}" />
+                                <Label FontSize="Medium" Text="{Binding memlname}" />
+                                <Label FontSize="Medium" Text="ค้าง" />
+                                <Label FontSize="Medium" Text="{Binding month}" />
+                            </StackLayout>
+                        </ViewCell>
+                    </DataTemplate>
+                </ListView.ItemTemplate>
+            </ListView>
+        </StackLayout>
+    </ContentPage.Content>
+</ContentPage>

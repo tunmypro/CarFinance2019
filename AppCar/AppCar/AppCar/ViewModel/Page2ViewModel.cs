@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -15,54 +16,33 @@ namespace AppCar.ViewModel
     {
         public Page2ViewModel()
         {
-            carList = _apiServices.GetCarses().OrderBy(x => x.carbrand).ToList();
+            carList = _apiServices.GetCarses().Result;
+            GenList = _apiServices.GetGentes().Result;
         }
+
 
         ApiServices _apiServices = new ApiServices();
-        private Cars _selectedCars;
-        private string _price;
-        private Gens _getPrice;
-        public List<Cars> carList { get; set; }
-        public List<Gens> GenList { get; set; }
+        private ObservableCollection<Gens> _GenList;
 
-        public Cars SelectedCars
+        public ObservableCollection<Gens> GenList
         {
-            get => _selectedCars;
+            get => _GenList;
             set
             {
-                if (_selectedCars != value)
-                {
-                    _selectedCars = value;
-                    OnPropertyChanged();
-                    price = _apiServices.GetGentes().Where(x => x.gencar == _selectedCars.carcode).FirstOrDefault().gencost.ToString();
-                }
+                _GenList = value;
+                OnPropertyChanged();
             }
         }
 
+        private ObservableCollection<Cars> _carList;
 
-        //เปลี่ยนเป็นคอมมาน
-        public Command getPrice
+        public ObservableCollection<Cars> carList
         {
-            get
-            {
-                return new Command(() =>
-                {
-                    price = _apiServices.GetGentes().Where(x => x.gencar == _selectedCars.carcode).FirstOrDefault().gencost.ToString();
-                    //price = "ราคาประเมิณ : " + GenList.Where(x => x.gencar == _selectedCars.carcode).FirstOrDefault().gencost;
-                });
-            }
-        }
-
-        public string price
-        {
-            get => _price;
+            get => _carList;
             set
             {
-                if (_price != value)
-                {
-                    _price = value;
-                    OnPropertyChanged();
-                }
+                _carList = value;
+                OnPropertyChanged();
             }
         }
 

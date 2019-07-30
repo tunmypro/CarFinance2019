@@ -26,7 +26,8 @@
 
 <script src="~/Scripts/jquery-3.4.1.min.js"></script>
 
-    <div class="container">
+<div class="container">
+    <div class="card bg-primary text-black">  
         <div class="row">
             <div class="col-5">
                 <div class="form-group">
@@ -109,16 +110,17 @@
         <div id="cost">
             <input type="range" class="custom-range" min="0" max=@cost value=@cost class="slider" step="1000" id="myRange">
         </div>
-    </div>
 
-<div class="row">
-    <div class="col-6">
-        <p style="text-align:center; font-size: 25px;">ผ่อน 12 เดือน : <span id="cost1"></span></p>
-        <p style="text-align:center; font-size: 25px;">ผ่อน 24 เดือน : <span id="cost2"></span></p>
-    </div>
-    <div class="col-6">
-        <p style="font-size: 25px;">ผ่อน 36 เดือน : <span id="cost3"></span></p>
-        <p style="font-size: 25px;">ผ่อน 48 เดือน : <span id="cost4"></span></p>
+        <div class="row">
+            <div class="col-6">
+                <p style="text-align:center; font-size: 25px;">ผ่อน 12 เดือน : <span id="cost1"></span></p>
+                <p style="text-align:center; font-size: 25px;">ผ่อน 24 เดือน : <span id="cost2"></span></p>
+            </div>
+            <div class="col-6">
+                <p style="font-size: 25px;">ผ่อน 36 เดือน : <span id="cost3"></span></p>
+                <p style="font-size: 25px;">ผ่อน 48 เดือน : <span id="cost4"></span></p>
+            </div>
+        </div>
     </div>
 </div>
 

@@ -8,51 +8,56 @@
     <a href='@Url.Action("sendcustomers", "View_Customer")' class="btn btn-outline-warning">ส่งเข้าไลน์กลุ่ม</a>
 </div>
 
-<br/>
-<table class="table">
-    <tr>
-        <th>
-            ชื่อ
-        </th>
-        <th>
-            นามสกุล
-        </th>
-        <th>
-            เบอร์โทร
-        </th>
-        <th>
-            จำนวนเงินที่ค้าง
-        </th>
-        <th>
-            จำนวนเดือนที่ค้าง
-        </th>
-        <th>
-            วันที่จ่ายล่าสุด
-        </th>
-    </tr>
+<br />
 
-    @foreach (var item in Model)
-    {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.member.memname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.member.memlname)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.member.memtel)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.totalmonth)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.month)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.loanlastdate)
-            </td>
-        </tr>
-    }
+<div class="card text-white bg-info mb-3" style="max-width: 100rem;">
+    <div class="card-body">
+        <table class="table">
+            <tr>
+                <th>
+                    ชื่อ
+                </th>
+                <th>
+                    นามสกุล
+                </th>
+                <th>
+                    เบอร์โทร
+                </th>
+                <th>
+                    จำนวนเงินที่ค้าง
+                </th>
+                <th>
+                    จำนวนเดือนที่ค้าง
+                </th>
+                <th>
+                    วันที่จ่ายล่าสุด
+                </th>
+            </tr>
 
-</table>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.member.memname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.member.memlname)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.member.memtel)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.totalmonth)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.month)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.loanlastdate)
+                    </td>
+                </tr>
+            }
+
+        </table>
+    </div>
+</div>
