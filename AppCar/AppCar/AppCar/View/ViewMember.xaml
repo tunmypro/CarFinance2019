@@ -68,7 +68,7 @@
                     <StackLayout Padding="10" Orientation="Horizontal">
                         <Label
                             FontSize="Medium"
-                            Text="ยอดเดือนค้าง : "
+                            Text="ยอดเดือนค้าง   : "
                             TextColor="Turquoise" />
                         <Label
                             x:Name="Label8"
@@ -93,7 +93,12 @@
                             TextColor="Turquoise" />
                     </StackLayout>
                 </Frame>
-                <Button Clicked="Button_OnClicked" Text="ออกไปหน้าหลัก" />
+                <Button
+                    BorderColor="Black"
+                    BorderRadius="10"
+                    BorderWidth="2"
+                    Clicked="Button_OnClicked"
+                    Text="ออกไปหน้าหลัก" />
             </StackLayout>
         </StackLayout>
     </ContentPage.Content>
