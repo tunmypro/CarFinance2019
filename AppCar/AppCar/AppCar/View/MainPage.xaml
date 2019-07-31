@@ -18,17 +18,26 @@
 
                     <Button
                         BackgroundColor="PaleGreen"
+                        BorderColor="Black"
+                        BorderRadius="10"
+                        BorderWidth="2"
                         Clicked="Button_OnClicked2"
                         Text="ประเมิณราคารถ" />
 
                     <Button
                         BackgroundColor="PaleGreen"
+                        BorderColor="Black"
+                        BorderRadius="10"
+                        BorderWidth="2"
                         Clicked="Button_OnClicked4"
                         Text="ค้นหาจุดชำระเงิน" />
 
                     <Button
                         x:Name="Button1"
                         BackgroundColor="PaleGreen"
+                        BorderColor="Black"
+                        BorderRadius="10"
+                        BorderWidth="2"
                         Clicked="Button_OnClicked3"
                         IsEnabled="True"
                         IsVisible="True"

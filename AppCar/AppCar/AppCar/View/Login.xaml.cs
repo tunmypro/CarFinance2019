@@ -28,12 +28,12 @@ namespace AppCar.View
             var password = PasswordEntry.Text;
             if (string.IsNullOrEmpty(username))
             {
-                userError.Text = "กรุณากรอก ชื่อผู้ใช้";
+                userError.Text = "กรุณากรอก ยูสเซอร์เนม";
             }
             else userError.Text = "";
             if (string.IsNullOrEmpty(password))
             {
-                passwordError.Text = "กรุณากรอก รหัสผ่าน";
+                passwordError.Text = "กรุณากรอก พาสเวิร์ด";
             }
             else passwordError.Text = "";
 

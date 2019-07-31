@@ -94,25 +94,25 @@ namespace AppCarFinance
             {
                 new Entry(value/48)
                 {
-                    ValueLabel = string.Format("{0:N2}",value/24),
+                    ValueLabel = string.Format("{0:N0}",value/48),
                     Label = "48 Month",
                     Color = SKColor.Parse("#2c3e50")
                 },
                 new Entry(value/36)
                 {
-                    ValueLabel = string.Format("{0:N2}",value/24),
+                    ValueLabel = string.Format("{0:N0}",value/36),
                     Label = "36 Month",
                     Color = SKColor.Parse("#77d065")
                 },
                 new Entry(value/24)
                 {
-                    ValueLabel = string.Format("{0:N2}",value/24),
+                    ValueLabel = string.Format("{0:N0}",value/24),
                     Label = "24 Month",
                     Color = SKColor.Parse("#b455b6")
                 },
                 new Entry(value/12)
                 {
-                    ValueLabel = string.Format("{0:N2}",value/24),
+                    ValueLabel = string.Format("{0:N0}",value/12),
                     Label = "12 Month",
                     Color = SKColor.Parse("#3498db")
                 }

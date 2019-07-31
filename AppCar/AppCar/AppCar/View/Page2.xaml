@@ -30,6 +30,7 @@
                 Title="-----กรุณาเลือกยี่ห้อรถ-----"
                 Grid.Row="0"
                 Grid.Column="0"
+                Margin="10"
                 ItemDisplayBinding="{Binding carbrand}"
                 ItemsSource="{Binding carList, Mode=TwoWay}"
                 SelectedIndexChanged="getgen" />
@@ -38,6 +39,7 @@
                 Title="-----กรุณาเลือกรุ่นรถ-----"
                 Grid.Row="0"
                 Grid.Column="1"
+                Margin="10"
                 SelectedIndexChanged="getprice" />
             <Label
                 x:Name="Label"

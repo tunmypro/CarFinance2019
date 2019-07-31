@@ -12,21 +12,65 @@
 
     <ContentPage.Content>
         <StackLayout>
-            <SearchBar x:Name="SearchBar" TextChanged="SearchBar_OnTextChanged" />
+            <SearchBar
+                x:Name="SearchBar"
+                Margin="15"
+                TextChanged="SearchBar_OnTextChanged" />
+
             <ListView
                 x:Name="ListView"
+                Margin="20"
                 HasUnevenRows="True"
-                ItemsSource="{Binding listMemberses}">
+                ItemsSource="{Binding listMemberses}"
+                RowHeight="100">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label FontSize="Medium" Text="ชื่อ" />
-                                <Label FontSize="Medium" Text="{Binding memname}" />
-                                <Label FontSize="Medium" Text="{Binding memlname}" />
-                                <Label FontSize="Medium" Text="เบอร์" />
-                                <Label FontSize="Medium" Text="{Binding memtel}" />
-                            </StackLayout>
+                            <ViewCell.View>
+                                <Frame OutlineColor="Blue">
+                                    <StackLayout>
+                                        <Grid>
+                                            <Grid.RowDefinitions>
+                                                <RowDefinition Height="1*" />
+                                                <RowDefinition Height="1*" />
+                                            </Grid.RowDefinitions>
+                                            <Grid.ColumnDefinitions>
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="1*" />
+                                                <ColumnDefinition Width="1*" />
+                                            </Grid.ColumnDefinitions>
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="0"
+                                                Grid.ColumnSpan="2"
+                                                FontSize="Medium"
+                                                HorizontalOptions="CenterAndExpand"
+                                                Text="ชื่อ" />
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="0"
+                                                FontSize="Medium"
+                                                HorizontalOptions="CenterAndExpand"
+                                                Text="{Binding memname}" />
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="1"
+                                                FontSize="Medium"
+                                                Text="{Binding memlname}" />
+                                            <Label
+                                                Grid.Row="0"
+                                                Grid.Column="2"
+                                                FontSize="Medium"
+                                                Text="เบอร์" />
+                                            <Label
+                                                Grid.Row="1"
+                                                Grid.Column="2"
+                                                FontSize="Medium"
+                                                Text="{Binding memtel}" />
+                                        </Grid>
+                                    </StackLayout>
+                                </Frame>
+                            </ViewCell.View>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

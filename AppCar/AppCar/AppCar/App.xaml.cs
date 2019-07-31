@@ -16,14 +16,7 @@ namespace AppCar
         {
             InitializeComponent();
 
-            if (CrossConnectivity.Current.IsConnected)
-            {
-                MainPage = new NavigationPage(new MainPage());
-            }
-            else
-            {
-                MainPage = new NavigationPage(new InternetCK());
-            }
+            MainPage = CrossConnectivity.Current.IsConnected ? new NavigationPage(new MainPage()) : new NavigationPage(new InternetCK());
         }
 
         protected override void OnStart()

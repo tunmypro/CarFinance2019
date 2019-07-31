@@ -10,17 +10,22 @@
     </ContentPage.BindingContext>
     <ContentPage.Content>
         <StackLayout>
-            <ListView HasUnevenRows="True" ItemsSource="{Binding listStale}">
+            <ListView
+                HasUnevenRows="True"
+                ItemsSource="{Binding listStale}"
+                RowHeight="50">
                 <ListView.ItemTemplate>
                     <DataTemplate>
                         <ViewCell>
-                            <StackLayout Orientation="Horizontal">
-                                <Label FontSize="Medium" Text="ชื่อ" />
-                                <Label FontSize="Medium" Text="{Binding memname}" />
-                                <Label FontSize="Medium" Text="{Binding memlname}" />
-                                <Label FontSize="Medium" Text="ค้าง" />
-                                <Label FontSize="Medium" Text="{Binding month}" />
-                            </StackLayout>
+                            <Frame OutlineColor="Blue">
+                                <StackLayout Orientation="Horizontal">
+                                    <Label FontSize="Medium" Text="ชื่อ" />
+                                    <Label FontSize="Medium" Text="{Binding memname}" />
+                                    <Label FontSize="Medium" Text="{Binding memlname}" />
+                                    <Label FontSize="Medium" Text="ค้าง" />
+                                    <Label FontSize="Medium" Text="{Binding month}" />
+                                </StackLayout>
+                            </Frame>
                         </ViewCell>
                     </DataTemplate>
                 </ListView.ItemTemplate>

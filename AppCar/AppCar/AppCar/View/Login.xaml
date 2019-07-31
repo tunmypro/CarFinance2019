@@ -10,17 +10,34 @@
         <StackLayout>
             <Entry
                 x:Name="UsernameEntry"
+                Margin="15"
                 Placeholder="ยูสเซอร์เนม"
                 PlaceholderColor="Silver" />
-            <Label x:Name="userError" />
+            <Label
+                x:Name="userError"
+                FontSize="Large"
+                HorizontalOptions="Center"
+                TextColor="Red" />
             <Entry
                 x:Name="PasswordEntry"
+                Margin="15"
                 IsPassword="true"
                 Keyboard="Default"
                 Placeholder="พาสเวิร์ด"
                 PlaceholderColor="Silver" />
-            <Label x:Name="passwordError" />
-            <Button Clicked="Login_Clicked" Text="เข้าสู่ระบบ" />
+            <Label
+                x:Name="passwordError"
+                FontSize="Large"
+                HorizontalOptions="Center"
+                TextColor="Red" />
+            <Button
+                Margin="15"
+                BackgroundColor="White"
+                BorderColor="Black"
+                BorderRadius="10"
+                BorderWidth="2"
+                Clicked="Login_Clicked"
+                Text="เข้าสู่ระบบ" />
         </StackLayout>
     </ContentPage.Content>
 </ContentPage>
